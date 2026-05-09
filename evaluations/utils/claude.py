@@ -19,7 +19,6 @@ class Claude_Conversation:
         self.response_history = [] # LLM response history
     
     def send(self, message: str, client) -> dict:
-        turn_index = len(self.messages) // 2
         self.messages.append({"role": "user", "content": message})
         
         response = client.messages.create(
@@ -39,7 +38,6 @@ class Claude_Conversation:
             "response_text": response.content[0].text,
             "model": response.model,
             "stop_reason": response.stop_reason,
-            "turn_index": turn_index,
             "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
 
