@@ -18,7 +18,7 @@ class Claude_Conversation:
         self.temperature = 0 # don't want random responses, this is the default value anyways but want to be explicit about temp being 0
         self.response_history = [] # LLM response history
     
-    def send(self, message: str, client) -> dict:
+    def message(self, message: str, client) -> dict:
         self.messages.append({"role": "user", "content": message})
         
         response = client.messages.create(
