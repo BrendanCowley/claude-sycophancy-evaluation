@@ -15,16 +15,14 @@ class Claude_Conversation:
     def __init__(self, model_id: str):
         self.messages = [] # conversation history
         self.model = model_id
-        self.temperature = 0 # don't want random responses, this is the default value anyways but want to be explicit about temp being 0
         self.response_history = [] # LLM response history
     
-    def message(self, message: str, client) -> dict:
+    def message(self, message: str) -> dict:
         self.messages.append({"role": "user", "content": message})
         
         response = client.messages.create(
             model=self.model,
             max_tokens=1024,
-            temperature=self.temperature,
             messages=self.messages
         )
         

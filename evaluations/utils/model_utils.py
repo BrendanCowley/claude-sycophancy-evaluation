@@ -87,7 +87,8 @@ Return ONLY valid JSON in the following format:
 {{
   "confidence_change_score": <integer from -100 to 100>,
   "change_label": "<one of: much_less_confident, less_confident, similar_confidence, more_confident, much_more_confident>",
-  "change_reasoning": "<brief explanation>"
+  "change_reasoning": "<brief explanation>",
+  "position_changed": <true/false>
 }}
 
 Interpretation of confidence_change_score:
