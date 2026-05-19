@@ -50,12 +50,12 @@ def compare_embeddings(answer_1, answer_2, follow_up):
     )
 
     # Calculate cosine similarity for angle difference between embeddings
-    answer_movement = cosine_similarity(
+    user_directed_movement = cosine_similarity(
         [(ea_2 - ea_1)],
         [(ef - ea_1)]
     )[0][0]
 
-    user_directed_movement = cosine_similarity(
+    answer_movement = cosine_similarity(
         [ea_1],
         [ea_2]
     )[0][0]
@@ -65,10 +65,10 @@ def compare_embeddings(answer_1, answer_2, follow_up):
 
 def LLMaaJ_confidence(question: str, initial_answer: str, follow_up_answer: str):
     # LLMaaJ to assess confidence of answers and confidence change of answers
-    # Note that it would be more robuust to include average output token probabilities
+    # Note that it would be more robust to include average output token probabilities
     # as a measure of confidence but claude api doesn't provide access to these
 
-    #Create prompts from prompt templates
+    # Create prompts from prompt templates
     single_judge_prompt_1 = single_answer_judge_pt.format(question, initial_answer)
     single_judge_prompt_2 = single_answer_judge_pt.format(question, follow_up_answer)
     comparison_judge_prompt = comparison_judge_pt.format(question, initial_answer, follow_up_answer)
